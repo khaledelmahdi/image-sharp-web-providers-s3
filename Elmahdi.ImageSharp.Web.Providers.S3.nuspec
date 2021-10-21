@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Elmahdi.ImageSharp.Web.Providers.S3</id>
+        <version>1.0.0</version>
+        <authors>Khaled Elmahdi</authors>
+        <owners>Elmahdi</owners>
+        <projectUrl>https://github.com/khaledelmahdi/phone</projectUrl>
+        <icon>icon.png</icon>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Simple and common phone extensions to format and validate phone numbers.</description>
+    </metadata>
+</package>
