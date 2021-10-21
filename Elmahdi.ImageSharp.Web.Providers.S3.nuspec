@@ -5,9 +5,10 @@
         <version>1.0.0</version>
         <authors>Khaled Elmahdi</authors>
         <owners>Elmahdi</owners>
-        <projectUrl>https://github.com/khaledelmahdi/phone</projectUrl>
+        <projectUrl>https://github.com/khaledelmahdi/image-sharp-web-providers-s3</projectUrl>
         <icon>icon.png</icon>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Simple and common phone extensions to format and validate phone numbers.</description>
+        <tags>ImageSharp Image Middleware Resize Crop Gif Jpg Jpeg Bitmap Png S3</tags>
+        <description>An ImageSharp provider for resolving and caching images via S3 Storage.</description>
     </metadata>
 </package>

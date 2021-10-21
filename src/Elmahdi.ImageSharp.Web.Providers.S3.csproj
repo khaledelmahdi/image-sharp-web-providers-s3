@@ -1,12 +1,36 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PackageId>Elmahdi.ImageSharp.Web.Providers.S3</PackageId>
+    <Version>1.0.0</Version>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Khaled Elmahdi</Authors>
+    <Company>Elmahdi</Company>
+    <Title>Elmahdi.ImageSharp.Web.Providers.S3</Title>
+    <Copyright>Copyright (c) 2021 Khaled Elmahdi</Copyright>
+    <Description>An ImageSharp provider for resolving and caching images via S3 Storage.</Description>
+    <PackageTags>ImageSharp Image Middleware Resize Crop Gif Jpg Jpeg Bitmap Png S3</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/khaledelmahdi/image-sharp-web-providers-s3</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageOutputPath>../Publish</PackageOutputPath>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="AWSSDK.S3" Version="3.7.3.13" />
-      <PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.4" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.7.3.13"/>
+    <PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.4"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../icon.png" Pack="true" PackagePath="\"/>
+    <None Include="../LICENSE.md" Pack="true" PackagePath="\"/>
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
 </Project>

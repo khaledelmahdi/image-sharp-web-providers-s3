@@ -1,48 +1,62 @@
 # Elmahdi.Phone
 
 [![Nuget downloads](https://img.shields.io/nuget/v/Elmahdi.ImageSharp.Web.Providers.S3)](https://www.nuget.org/packages/Elmahdi.ImageSharp.Web.Providers.S3/)
-[![Test workflow]](https://github.com/khaledelmahdi/image-sharp-web-providers-s3/actions/workflows/dotnet.yml/badge.svg)
 [![GitHub license](https://img.shields.io/github/license/khaledelmahdi/image-sharp-web-providers-s3)](https://github.com/khaledelmahdi/image-sharp-web-providers-s3)
 
-Simple and common phone extensions to format and validate phone numbers.
+An Image provider for [Six Labors ImageSharp.Web](https://docs.sixlabors.com/articles/imagesharp)
+
+This provider allows the processing and serving of image files from 
+Amazon S3 or DigitalOcean Spaces and is available as an external package 
+installable via [NuGet](https://www.nuget.org/packages/Elmahdi.ImageSharp.Web.Providers.S3/).
 
 ## Installation
 
-Available on [nuget](https://www.nuget.org/packages/Elmahdi.Phone/)
-
 ```
-PM> Install-Package Elmahdi.Phone -Version 1.0.3
+PM> Install-Package Elmahdi.ImageSharp.Web.Providers.S3 -Version VERSION_NUMBER
 ```
 
 ```
-> dotnet add package Elmahdi.Phone --version 1.0.3
+> dotnet add package Elmahdi.ImageSharp.Web.Providers.S3 --version VERSION_NUMBER
 ```
 
 ## Usage
 
-### Formatting:
+Once installed the provider AzureBlobContainerClientOptions can be configured as follows:
 
 ```c#
-var phone = "0141 4 0 400 50";
-phone.ToLocalPhoneNumber(); // returns 0141 404 0050
-phone.ToInternationalPhoneNumber() // returns +441414040050
+using Elmahdi.ImageSharp.Web.Providers.S3.Providers;
+using SixLabors.ImageSharp.Web.DependencyInjection;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    services
+        .AddImageSharp()
+        .Configure<S3StorageImageProviderOptions>(options => { 
+            options.S3Containers.Add(new S3ClientOptions { 
+                AccessKeyId = "", // Access Key Id
+                SecretAccessKey = "", // Secret Access Key
+                BucketName = "", // Bucket Name, 
+                EndpointUrl = "" // Endpoint Url            
+            }); 
+        })
+        .ClearProviders()
+        .AddProvider<S3StorageImageProvider>();
+}
+
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    ...
+    app.UseImageSharp(); // Add this BEFORE app.UseStaticFiles();
+    ...
+}
 ```
 
-By default, these extensions are based on United Kingdom numbers.
-You may override them by passing the country code to the extension.
-
-```c#
-var phone = "05 06 850 900";
-phone.ToLocalPhoneNumber("EG"); // returns 050 6850900
-phone.ToInternationalPhoneNumber("EG") // returns +20506850900
+Url requests are matched in accordance to the following rule:
+```
+/{BucketName}/{FileName}
 ```
 
-### Validating
+## To do 
 
-```c#
-var validPhone = "0141 4 0 400 50";
-var invalidPhone = "abc";
-
-validPhone.IsValidPhoneNumberFor(); // returns true;
-invalidPhone.IsValidPhoneNumberFor(); // returns false;
-```
+- [ ] Add tests
